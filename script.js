@@ -8,6 +8,11 @@ const proximityValue = document.getElementById('proximity-value');
 const playerNameInput = document.getElementById('playerName');
 const playerRankEl = document.getElementById('playerRank');
 const introScreen = document.getElementById('intro-screen');
+const resultModal = document.getElementById('result-modal');
+const resultMessage = document.getElementById('result-message');
+const finalScoreEl = document.getElementById('final-score');
+const finalRankEl = document.getElementById('final-rank');
+const closeModalBtn = document.getElementById('close-modal');
 
 let targetX;
 let targetY;
@@ -167,16 +172,30 @@ function resetRound() {
 // Fim do jogo
 function endGame() {
   const highscore = localStorage.getItem("pixelGame_highscore") || 0;
+  const playerName = playerNameInput.value || "Jogador";
+  const rank = playerRankEl.textContent;
+  const rankClass = playerRankEl.className;
+
   if (score > highscore) {
     localStorage.setItem("pixelGame_highscore", score);
-    alert(`Novo Recorde! Pontuação: ${score}\nSeu Rank: ${playerRankEl.textContent}`);
+    resultMessage.innerHTML = `Incrível, <strong>${playerName}</strong>!<br>Você bateu seu recorde pessoal!`;
   } else {
-    alert(`Fim do jogo! Pontuação: ${score}\nRecorde Atual: ${highscore}`);
+    resultMessage.innerHTML = `Muito bem, <strong>${playerName}</strong>!<br>Você completou o desafio de outono.`;
   }
+
+  finalScoreEl.textContent = score;
+  finalRankEl.textContent = rank;
+  finalRankEl.className = rankClass;
   
+  resultModal.classList.add('show');
   gameActive = false;
   startBtn.textContent = "Jogar Novamente";
 }
+
+// Fechar modal
+closeModalBtn.addEventListener('click', () => {
+  resultModal.classList.remove('show');
+});
 
 // Iniciar jogo
 startBtn.addEventListener("click", () => {

@@ -17,7 +17,7 @@
       <h1>Pixel Memory Game</h1>
       <div class="user-info">
         <input type="text" id="playerName" placeholder="Seu Nome" maxlength="15">
-        <span id="playerRank">Bronze</span>
+        <span id="playerRank" style="display: none;">Bronze</span>
       </div>
       <div class="stats">
         <p>Rodada: <span id="round">1</span></p>
@@ -30,6 +30,18 @@
   <div id="game-area">
     <div id="pixel-bg-overlay"></div>
     <div id="pixel" class="pixel"></div>
+    
+    <div id="result-modal" class="modal">
+      <div class="modal-content">
+        <h2>🎉 Parabéns!</h2>
+        <p id="result-message"></p>
+        <div class="result-stats">
+          <p>Pontuação: <span id="final-score">0</span></p>
+          <p>Rank: <span id="final-rank">Bronze</span></p>
+        </div>
+        <button id="close-modal">Jogar Novamente</button>
+      </div>
+    </div>
     
     <div id="intro-screen">
       <div class="campfire-container">
