@@ -33,6 +33,9 @@ window.addEventListener('load', () => {
   if (savedScore) {
     updateRank(parseInt(savedScore));
   }
+  
+  // Garantir que o modal esteja escondido ao carregar
+  resultModal.classList.remove('show');
 });
 
 // Salvar nome ao mudar
@@ -131,7 +134,7 @@ function calculateScore(clickX, clickY) {
     (clickY - targetY) ** 2
   );
 
-  // Porcentagem de proximidade (quanto menor a distância, maior a porcentagem)
+  // Porcentagem de proximidade
   let proximityPercent = Math.max(0, 100 - (distance / (maxDistance * 0.2)) * 100);
   proximityPercent = Math.round(proximityPercent);
   
@@ -187,18 +190,22 @@ function endGame() {
   finalRankEl.textContent = rank;
   finalRankEl.className = rankClass;
   
+  // Mostrar modal APENAS aqui
   resultModal.classList.add('show');
   gameActive = false;
   startBtn.textContent = "Jogar Novamente";
 }
 
-// Fechar modal
+// Fechar modal e resetar para novo jogo
 closeModalBtn.addEventListener('click', () => {
   resultModal.classList.remove('show');
 });
 
 // Iniciar jogo
 startBtn.addEventListener("click", () => {
+  // Garantir que o modal esteja fechado ao reiniciar
+  resultModal.classList.remove('show');
+  
   score = 0;
   round = 1;
 
@@ -206,7 +213,7 @@ startBtn.addEventListener("click", () => {
   roundEl.textContent = round;
   startBtn.textContent = "Reiniciar";
   
-  // Esconder a tela de introdução (fogueira) ao iniciar
+  // Esconder a tela de introdução
   introScreen.style.opacity = '0';
   setTimeout(() => {
     introScreen.style.display = 'none';

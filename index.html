@@ -31,18 +31,6 @@
     <div id="pixel-bg-overlay"></div>
     <div id="pixel" class="pixel"></div>
     
-    <div id="result-modal" class="modal">
-      <div class="modal-content">
-        <h2>🎉 Parabéns!</h2>
-        <p id="result-message"></p>
-        <div class="result-stats">
-          <p>Pontuação: <span id="final-score">0</span></p>
-          <p>Rank: <span id="final-rank">Bronze</span></p>
-        </div>
-        <button id="close-modal">Jogar Novamente</button>
-      </div>
-    </div>
-    
     <div id="intro-screen">
       <div class="campfire-container">
         <div class="flame"></div>
@@ -53,6 +41,19 @@
         <div class="marshmallow stick-right"></div>
       </div>
       <p class="intro-text">Aqueça-se na fogueira e prepare-se...</p>
+    </div>
+  </div>
+
+  <!-- Modal movido para fora do game-area e com classe modal garantida -->
+  <div id="result-modal" class="modal">
+    <div class="modal-content">
+      <h2>🎉 Parabéns!</h2>
+      <p id="result-message"></p>
+      <div class="result-stats">
+        <p>Pontuação: <span id="final-score">0</span></p>
+        <p>Rank: <span id="final-rank">Bronze</span></p>
+      </div>
+      <button id="close-modal">Jogar Novamente</button>
     </div>
   </div>
 
