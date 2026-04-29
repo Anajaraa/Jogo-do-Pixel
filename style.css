@@ -364,19 +364,21 @@ h1 {
 
 /* --- MODAL --- */
 .modal {
-  display: none;
-  position: fixed; /* Mudar para fixed para garantir que cubra tudo */
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(62, 39, 35, 0.85);
-  backdrop-filter: blur(8px);
-  z-index: 1000;
+  display: none !important; /* Força o modal a ficar escondido */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(62, 39, 35, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 9999; /* Garante que fique acima de tudo */
   justify-content: center;
   align-items: center;
 }
 
 .modal.show {
-  display: flex !important;
+  display: flex !important; /* Só mostra quando a classe 'show' for adicionada via JS */
 }
 
 .modal-content {
