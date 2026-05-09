@@ -237,7 +237,7 @@ h1 {
   transform: scale(1.1);
 }
 
-/* --- CAMPFIRE --- */
+/* --- CAMPFIRE (Redesenhada para ser igual à imagem fogueira.png) --- */
 #intro-screen {
   position: absolute;
   top: 50%; left: 50%;
@@ -245,11 +245,172 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   z-index: 4;
   transition: opacity 0.5s ease;
   width: 100%;
-  max-width: 300px;
+}
+
+.campfire-container {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.campfire-circle {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: rgba(62, 54, 54, 0.4);
+  border-radius: 50%;
+  top: 10%;
+}
+
+.logs-back {
+  position: absolute;
+  width: 160px;
+  height: 25px;
+  background: #a04000;
+  border-radius: 4px;
+  bottom: 65px;
+  z-index: 1;
+  box-shadow: inset 0 -4px 0 rgba(0,0,0,0.2);
+}
+
+.flame-container {
+  position: absolute;
+  bottom: 80px;
+  width: 100px;
+  height: 120px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.flame-outer {
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  background: #e67e22;
+  border-radius: 50% 50% 20% 20%;
+  filter: blur(2px);
+  animation: flickerMain 0.15s infinite alternate;
+}
+
+.flame-inner {
+  position: absolute;
+  width: 55px;
+  height: 75px;
+  background: #f1c40f;
+  border-radius: 50% 50% 20% 20%;
+  bottom: 5px;
+  animation: flickerMain 0.1s infinite alternate-reverse;
+}
+
+.flame-core {
+  position: absolute;
+  width: 30px;
+  height: 45px;
+  background: #fff9c4;
+  border-radius: 50% 50% 20% 20%;
+  bottom: 10px;
+  animation: flickerMain 0.2s infinite alternate;
+}
+
+.logs-front {
+  position: absolute;
+  bottom: 30px;
+  width: 180px;
+  height: 60px;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+}
+
+.log-item {
+  width: 45px;
+  height: 60px;
+  background: #a04000;
+  border-radius: 22px 22px 10px 10px;
+  position: relative;
+  border-bottom: 8px solid #5d4037;
+}
+
+.log-item::before {
+  content: '';
+  position: absolute;
+  top: 5px; left: 5px; right: 5px;
+  height: 35px;
+  background: radial-gradient(circle, #d2b48c 30%, #8d6e63 70%);
+  border-radius: 50%;
+}
+
+.log-left { transform: rotate(-25deg) translateY(5px); margin-right: -10px; }
+.log-center { z-index: 2; }
+.log-right { transform: rotate(25deg) translateY(5px); margin-left: -10px; }
+
+/* Marshmallows virados para a fogueira */
+.marshmallow-stick {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.stick {
+  width: 4px;
+  height: 80px;
+  background: #5d4037;
+  border-radius: 2px;
+}
+
+.marshmallow {
+  width: 16px;
+  height: 20px;
+  background: #fff;
+  border-radius: 4px;
+  position: absolute;
+  top: -5px;
+  left: -6px;
+  box-shadow: inset -3px -3px 5px rgba(0,0,0,0.1), 0 0 10px rgba(255,255,255,0.3);
+}
+
+.stick-left {
+  left: -20px;
+  bottom: 60px;
+  transform: rotate(60deg);
+  animation: floatMarshLeft 3s infinite ease-in-out;
+}
+
+.stick-right {
+  right: -20px;
+  bottom: 60px;
+  transform: rotate(-60deg);
+  animation: floatMarshRight 3.5s infinite ease-in-out;
+}
+
+/* Os marshmallows ficam na ponta do stick, e o stick aponta para o centro */
+.stick-left .stick { transform: rotate(-10deg); }
+.stick-right .stick { transform: rotate(10deg); }
+
+@keyframes flickerMain {
+  0% { transform: scale(1) translateY(0); opacity: 0.9; }
+  100% { transform: scale(1.05) translateY(-5px); opacity: 1; }
+}
+
+@keyframes floatMarshLeft {
+  0%, 100% { transform: rotate(60deg) translate(0, 0); }
+  50% { transform: rotate(58deg) translate(5px, -5px); }
+}
+
+@keyframes floatMarshRight {
+  0%, 100% { transform: rotate(-60deg) translate(0, 0); }
+  50% { transform: rotate(-58deg) translate(-5px, -5px); }
 }
 
 .intro-text {
@@ -259,108 +420,6 @@ h1 {
   font-size: 1.2rem;
   text-align: center;
 }
-
-.campfire-container {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.campfire-container::before {
-  content: '';
-  position: absolute;
-  top: 10%; left: 10%; width: 80%; height: 80%;
-  background: rgba(46, 34, 34, 0.4);
-  border-radius: 50%;
-  z-index: 0;
-}
-
-.flame {
-  width: 80px; height: 80px;
-  background: #f39c12;
-  border-radius: 0 100% 100% 100%;
-  transform: rotate(135deg);
-  animation: flicker 0.6s infinite alternate ease-in-out;
-  box-shadow: 0 0 30px #e67e22, 0 0 60px #d35400;
-  z-index: 3;
-  position: absolute;
-  bottom: 45px;
-}
-
-.flame::after {
-  content: '';
-  width: 50px; height: 50px;
-  background: #f1c40f;
-  border-radius: 0 100% 100% 100%;
-  position: absolute;
-  top: 15px; right: 15px;
-  box-shadow: 0 0 15px #f1c40f;
-}
-
-.flame::before {
-  content: '';
-  width: 25px; height: 25px;
-  background: #fff9c4;
-  border-radius: 0 100% 100% 100%;
-  position: absolute;
-  top: 35px; right: 35px;
-  z-index: 4;
-}
-
-.logs {
-  width: 100px; height: 30px;
-  position: relative;
-  z-index: 2;
-  bottom: 10px;
-}
-
-.logs::before, .logs::after {
-  content: '';
-  position: absolute;
-  width: 100px; height: 28px;
-  background: #8d6e63;
-  border-radius: 14px;
-  border-bottom: 4px solid #5d4037;
-}
-
-.logs::before { transform: rotate(15deg) translateX(-10px); }
-.logs::after { transform: rotate(-15deg) translateX(10px); }
-
-.logs-extra {
-  position: absolute;
-  width: 100px; height: 28px;
-  background: #795548;
-  border-radius: 14px;
-  z-index: 1;
-  bottom: 15px;
-  border-bottom: 4px solid #4e342e;
-}
-
-.logs-extra.left { transform: rotate(45deg) translateX(-20px); }
-.logs-extra.right { transform: rotate(-45deg) translateX(20px); }
-
-.marshmallow {
-  width: 80px; height: 4px;
-  background: #5d4037;
-  position: absolute;
-  z-index: 5;
-}
-
-.marshmallow::after {
-  content: '';
-  position: absolute;
-  width: 18px; height: 14px;
-  background: #fff;
-  border-radius: 3px;
-  right: 0; top: -5px;
-  box-shadow: inset -4px 0 6px #ffe082, 0 0 5px rgba(0,0,0,0.1);
-}
-
-.stick-left { bottom: 70px; left: -30px; transform: rotate(25deg); animation: float-left 3s infinite ease-in-out; }
-.stick-right { bottom: 85px; right: -30px; transform: rotate(-30deg); animation: float-right 3.5s infinite ease-in-out; }
 
 /* --- MODAL --- */
 .modal {
