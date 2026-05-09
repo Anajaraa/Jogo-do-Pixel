@@ -271,13 +271,13 @@ h1 {
 
 .logs-back {
   position: absolute;
-  width: 160px;
-  height: 25px;
-  background: #a04000;
-  border-radius: 4px;
-  bottom: 65px;
+  width: 140px;
+  height: 35px;
+  background: #8b4513;
+  border-radius: 8px;
+  bottom: 60px;
   z-index: 1;
-  box-shadow: inset 0 -4px 0 rgba(0,0,0,0.2);
+  box-shadow: inset 0 -8px 0 rgba(0,0,0,0.3);
 }
 
 .flame-container {
@@ -323,35 +323,49 @@ h1 {
 
 .logs-front {
   position: absolute;
-  bottom: 30px;
-  width: 180px;
-  height: 60px;
+  bottom: 25px;
+  width: 200px;
+  height: 80px;
   z-index: 4;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .log-item {
-  width: 45px;
-  height: 60px;
-  background: #a04000;
-  border-radius: 22px 22px 10px 10px;
+  width: 55px;
+  height: 75px;
+  background: #a0522d;
+  border-radius: 25px 25px 12px 12px;
   position: relative;
-  border-bottom: 8px solid #5d4037;
+  border-bottom: 12px solid #5d4037;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.2);
 }
 
 .log-item::before {
   content: '';
   position: absolute;
-  top: 5px; left: 5px; right: 5px;
-  height: 35px;
-  background: radial-gradient(circle, #d2b48c 30%, #8d6e63 70%);
+  top: 8px; left: 8px; right: 8px;
+  height: 40px;
+  background: radial-gradient(circle, #deb887 20%, #cd853f 50%, #8b4513 100%);
   border-radius: 50%;
+  border: 2px solid #5d4037;
 }
 
-.log-left { transform: rotate(-25deg) translateY(5px); margin-right: -10px; }
-.log-center { z-index: 2; }
-.log-right { transform: rotate(25deg) translateY(5px); margin-left: -10px; }
+.log-left { 
+  transform: rotate(-30deg) translate(15px, 5px); 
+  z-index: 1;
+}
+
+.log-center { 
+  z-index: 3; 
+  transform: translateY(10px);
+}
+
+.log-right { 
+  transform: rotate(30deg) translate(-15px, 5px); 
+  z-index: 1;
+}
 
 /* Marshmallows virados para a fogueira */
 .marshmallow-stick {
