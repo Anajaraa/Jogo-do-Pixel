@@ -237,7 +237,7 @@ h1 {
   transform: scale(1.1);
 }
 
-/* --- CAMPFIRE (Redesenhada para ser igual à imagem fogueira.png) --- */
+/* --- CAMPFIRE (Versão Final - Idêntica à imagem) --- */
 #intro-screen {
   position: absolute;
   top: 50%; left: 50%;
@@ -245,7 +245,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
   z-index: 4;
   transition: opacity 0.5s ease;
   width: 100%;
@@ -253,38 +253,38 @@ h1 {
 
 .campfire-container {
   position: relative;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .campfire-circle {
   position: absolute;
-  width: 180px;
-  height: 180px;
-  background: rgba(62, 54, 54, 0.4);
+  width: 160px;
+  height: 160px;
+  background: #3e3636;
   border-radius: 50%;
-  top: 10%;
+  bottom: 20px;
+  z-index: 0;
 }
 
 .logs-back {
   position: absolute;
-  width: 140px;
-  height: 35px;
-  background: #8b4513;
-  border-radius: 8px;
-  bottom: 60px;
+  width: 150px;
+  height: 25px;
+  background: #a04000;
+  border-radius: 4px;
+  bottom: 55px;
   z-index: 1;
-  box-shadow: inset 0 -8px 0 rgba(0,0,0,0.3);
 }
 
 .flame-container {
   position: absolute;
-  bottom: 80px;
-  width: 100px;
-  height: 120px;
+  bottom: 50px;
+  width: 120px;
+  height: 130px;
   z-index: 3;
   display: flex;
   justify-content: center;
@@ -293,39 +293,41 @@ h1 {
 
 .flame-outer {
   position: absolute;
-  width: 80px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   background: #e67e22;
+  clip-path: polygon(50% 0%, 70% 20%, 90% 40%, 80% 70%, 50% 100%, 20% 70%, 10% 40%, 30% 20%);
   border-radius: 50% 50% 20% 20%;
-  filter: blur(2px);
-  animation: flickerMain 0.15s infinite alternate;
+  animation: flickerMain 0.2s infinite alternate;
 }
 
 .flame-inner {
   position: absolute;
-  width: 55px;
-  height: 75px;
+  width: 70%;
+  height: 70%;
   background: #f1c40f;
+  clip-path: polygon(50% 0%, 80% 30%, 70% 80%, 50% 100%, 30% 80%, 20% 30%);
   border-radius: 50% 50% 20% 20%;
   bottom: 5px;
-  animation: flickerMain 0.1s infinite alternate-reverse;
+  animation: flickerMain 0.15s infinite alternate-reverse;
 }
 
 .flame-core {
   position: absolute;
-  width: 30px;
-  height: 45px;
+  width: 40%;
+  height: 40%;
   background: #fff9c4;
+  clip-path: polygon(50% 0%, 70% 40%, 50% 100%, 30% 40%);
   border-radius: 50% 50% 20% 20%;
   bottom: 10px;
-  animation: flickerMain 0.2s infinite alternate;
+  animation: flickerMain 0.1s infinite alternate;
 }
 
 .logs-front {
   position: absolute;
-  bottom: 25px;
-  width: 200px;
-  height: 80px;
+  bottom: 10px;
+  width: 180px;
+  height: 60px;
   z-index: 4;
   display: flex;
   justify-content: center;
@@ -333,106 +335,91 @@ h1 {
 }
 
 .log-item {
-  width: 55px;
-  height: 75px;
-  background: #a0522d;
-  border-radius: 25px 25px 12px 12px;
+  width: 50px;
+  height: 45px;
+  background: #a04000;
   position: relative;
-  border-bottom: 12px solid #5d4037;
-  box-shadow: 4px 0 10px rgba(0,0,0,0.2);
 }
 
 .log-item::before {
   content: '';
   position: absolute;
-  top: 8px; left: 8px; right: 8px;
-  height: 40px;
-  background: radial-gradient(circle, #deb887 20%, #cd853f 50%, #8b4513 100%);
+  width: 100%;
+  height: 35px;
+  background: #d2b48c;
   border-radius: 50%;
-  border: 2px solid #5d4037;
+  top: -15px;
+  border: 3px solid #a04000;
+  background-image: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 41%, transparent 42%, rgba(0,0,0,0.1) 60%, transparent 61%);
 }
 
-.log-left { 
-  transform: rotate(-30deg) translate(15px, 5px); 
-  z-index: 1;
-}
+.log-left { transform: rotate(-30deg) translate(20px, 0); border-radius: 0 0 10px 20px; }
+.log-center { z-index: 2; border-radius: 0 0 10px 10px; }
+.log-right { transform: rotate(30deg) translate(-20px, 0); border-radius: 0 0 20px 10px; }
 
-.log-center { 
-  z-index: 3; 
-  transform: translateY(10px);
-}
-
-.log-right { 
-  transform: rotate(30deg) translate(-15px, 5px); 
-  z-index: 1;
-}
-
-/* Marshmallows virados para a fogueira */
+/* Marshmallows */
 .marshmallow-stick {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 4px;
   z-index: 10;
-  pointer-events: none;
 }
 
 .stick {
-  width: 4px;
-  height: 80px;
+  width: 100%;
+  height: 100%;
   background: #5d4037;
   border-radius: 2px;
 }
 
 .marshmallow {
   width: 16px;
-  height: 20px;
+  height: 12px;
   background: #fff;
-  border-radius: 4px;
+  border-radius: 3px;
   position: absolute;
-  top: -5px;
-  left: -6px;
-  box-shadow: inset -3px -3px 5px rgba(0,0,0,0.1), 0 0 10px rgba(255,255,255,0.3);
+  top: -4px;
+  right: 0;
+  box-shadow: inset -2px -2px 4px rgba(0,0,0,0.1);
 }
 
 .stick-left {
-  left: -20px;
-  bottom: 60px;
-  transform: rotate(60deg);
-  animation: floatMarshLeft 3s infinite ease-in-out;
+  left: -40px;
+  bottom: 80px;
+  transform-origin: left center;
+  transform: rotate(20deg);
+  animation: floatStickLeft 3s infinite ease-in-out;
 }
 
 .stick-right {
-  right: -20px;
-  bottom: 60px;
-  transform: rotate(-60deg);
-  animation: floatMarshRight 3.5s infinite ease-in-out;
+  right: -40px;
+  bottom: 80px;
+  transform-origin: right center;
+  transform: rotate(-20deg);
+  animation: floatStickRight 3.5s infinite ease-in-out;
 }
-
-/* Os marshmallows ficam na ponta do stick, e o stick aponta para o centro */
-.stick-left .stick { transform: rotate(-10deg); }
-.stick-right .stick { transform: rotate(10deg); }
 
 @keyframes flickerMain {
-  0% { transform: scale(1) translateY(0); opacity: 0.9; }
-  100% { transform: scale(1.05) translateY(-5px); opacity: 1; }
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.03) translateY(-2px); }
 }
 
-@keyframes floatMarshLeft {
-  0%, 100% { transform: rotate(60deg) translate(0, 0); }
-  50% { transform: rotate(58deg) translate(5px, -5px); }
+@keyframes floatStickLeft {
+  0%, 100% { transform: rotate(20deg); }
+  50% { transform: rotate(25deg); }
 }
 
-@keyframes floatMarshRight {
-  0%, 100% { transform: rotate(-60deg) translate(0, 0); }
-  50% { transform: rotate(-58deg) translate(-5px, -5px); }
+@keyframes floatStickRight {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(-25deg); }
 }
 
 .intro-text {
   font-family: var(--font-display);
   font-weight: 700;
   color: var(--color-secondary);
-  font-size: 1.2rem;
-  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 10px;
 }
 
 /* --- MODAL --- */
