@@ -5,6 +5,7 @@ const startBtn = document.getElementById('startBtn');
 const pixel = document.getElementById('pixel');
 const proximityFill = document.getElementById('proximity-fill');
 const proximityValue = document.getElementById('proximity-value');
+const progressBarWrapper = document.getElementById('progress-bar-wrapper');
 const playerNameInput = document.getElementById('playerName');
 const playerRankEl = document.getElementById('playerRank');
 const introScreen = document.getElementById('intro-screen');
@@ -140,6 +141,7 @@ function calculateScore(clickX, clickY) {
   
   proximityFill.style.width = `${proximityPercent}%`;
   proximityValue.textContent = `${proximityPercent}%`;
+  progressBarWrapper.setAttribute('aria-valuenow', proximityPercent);
 
   let points = Math.max(0, 1000 - distance * 10);
   score += Math.floor(points);
